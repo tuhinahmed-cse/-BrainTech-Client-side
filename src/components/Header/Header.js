@@ -2,14 +2,13 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { FaBrain } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 
 const Header = () => {
     return (
-        <Navbar className='mb-4' collapseOnSelect expand="lg" bg="light" variant="light">
+        <Navbar className='' collapseOnSelect expand="lg" bg="light" variant="light">
       <Container>
         <Navbar.Brand ><Link to='/' style={{textDecoration:'none'}} ><FaBrain style={{color:'tomato', height:'30px'}}></FaBrain> <span style={{color:'goldenrod'}}>Brain</span><span className='text-info'>Tech</span> </Link> </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
