@@ -2,15 +2,16 @@ import React from 'react';
 import { Col, Container, Image, Row } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
+import Footer from '../Footer/Footer';
 
 const Home = () => {
     return (
-        <div>
-            <div style={{backgroundColor:'skyblue', width:'100%', height:'100vh'}}>
+        <div className=''>
+            <div style={{backgroundColor:'skyblue', height:'840px'}}>
 
 <Container>
     <Row>
-        <Col lg='3'>
+        <Col lg='3' >
 
             <h5 style={{marginTop:'200px', color: 'white'}}>WELCOME TO BRAINTECH</h5>
             <h2 className='text-white'>Best Online Education Expertise</h2>
@@ -29,6 +30,7 @@ const Home = () => {
 
 
 </div>
+
         </div>
       
     );
