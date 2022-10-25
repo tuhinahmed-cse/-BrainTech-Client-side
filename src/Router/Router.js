@@ -10,6 +10,7 @@ import Category from "../MainPages/Category/Category";
 import Course from "../MainPages/Course/Course";
 import CourseDetails from "../MainPages/CourseDetails/CourseDetails";
 import LeftSideNav from "../MainPages/LeftSideNav/LeftSideNav";
+import PurchaseCourse from "../MainPages/PurchaseCourse/PurchaseCourse";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,11 @@ export const router = createBrowserRouter([
             {
                 path:'/course/:id',
                 element:<LeftSideNav></LeftSideNav>,
+                loader:({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+            },
+            {
+                path:'/purchase/:id',
+                element:<PurchaseCourse></PurchaseCourse>,
                 loader:({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
             },
            

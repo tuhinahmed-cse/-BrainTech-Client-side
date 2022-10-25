@@ -4,8 +4,8 @@ import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image'
-import { FaClock, FaMoneyCheck, FaStar, FaTeeth } from 'react-icons/fa';
-import { Col, Container, Row } from 'react-bootstrap';
+import { FaCartPlus, FaClock, FaMoneyCheck, FaStar, FaTeeth } from 'react-icons/fa';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 
 const Category = () => {
 
@@ -38,10 +38,7 @@ const Category = () => {
                                     <Card.Img variant="top" src={image_url} style={{ height: '200px' }} />
                                     <Card.Text className='mt-3'>
                                         {
-                                            details.length > 250 ?
-                                                <p className='text-success'>{details.slice(0, 250) + '...'} <Link to={`/course/${id}`} style={{ textDecoration: 'none', color: 'coral', fontWeight: '600' }}>Read More</Link> </p>
-                                                :
-                                                <p>{details}</p>
+                                            details
                                         }
                                     </Card.Text>
                                 </Card.Body>
@@ -71,6 +68,7 @@ const Category = () => {
                                         <span > Buy : {price}$</span>
                                     </div>
                                 </Card.Footer>
+                                <Button variant="outline-info"><Link to={`/purchase/${id}`} style={{textDecoration:'none'}}>Get premium access <FaCartPlus></FaCartPlus></Link></Button>
                             </Card>
                         </div>
                     </div>

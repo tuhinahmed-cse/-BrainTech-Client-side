@@ -3,17 +3,17 @@ import { useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image'
-import { FaClock, FaMoneyCheck, FaStar, FaTeeth } from 'react-icons/fa';
-import { Col, Container, Row } from 'react-bootstrap';
+import { FaCartPlus, FaClock, FaMoneyCheck, FaStar, FaTeeth } from 'react-icons/fa';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 
 
 const CourseDetails = () => {
 
 const iCourse = useLoaderData();
-const { title, price, author, details, rating, image_url,lecture, hour} = iCourse;
+const {id, title, price, author, details, rating, image_url,lecture, hour} = iCourse;
 
     return (
-       <Container >
+       <Container className='mb-5' >
          <Row>
             <Col lg='3'>
             </Col>
@@ -63,6 +63,7 @@ const { title, price, author, details, rating, image_url,lecture, hour} = iCours
           <span > Buy : {price}$</span>
         </div>
       </Card.Footer>
+      <Button variant="outline-info"><Link to={`/purchase/${id}`} style={{textDecoration:'none'}}>Get premium access <FaCartPlus></FaCartPlus></Link></Button>
     </Card>
         </div>
 
