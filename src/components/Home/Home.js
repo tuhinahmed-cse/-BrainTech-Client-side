@@ -1,8 +1,7 @@
 import React from 'react';
 import { Col, Container, Image, Row } from 'react-bootstrap';
-import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
-import Footer from '../Footer/Footer';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -17,8 +16,9 @@ const Home = () => {
             <h2 className='text-white'>Best Online Education Expertise</h2>
             <p className='text-white'>Online learning requires more self-regulation, intrinsic motivation and independence from the learner than the traditional classroom education.</p>
 
-            <Button className='mb-3' variant="outline-light">Visit Our All Courses</Button>
-            <Button variant="outline-light">Contact with Us for More Info</Button>
+           
+            <Link to='/course' ><Button variant="outline-light" className='mb-3'>Visit Our All Courses</Button></Link>
+            <Link to='/contact' ><Button variant="outline-light">Contact with Us for More Info</Button></Link>
         
         </Col>
         
