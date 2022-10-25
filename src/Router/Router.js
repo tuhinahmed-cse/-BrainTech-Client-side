@@ -25,27 +25,27 @@ export const router = createBrowserRouter([
             {
                 path:'/course',
                 element:<Course></Course>,
-                loader:() => fetch('http://localhost:5000/courses/')
+                loader:() => fetch('https://b610-lerning-platform-server-side-nine.vercel.app/courses/')
             },
             {
                 path:'/course/:id',
                 element:<CourseDetails></CourseDetails>,
-                loader:({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader:({ params }) => fetch(`https://b610-lerning-platform-server-side-nine.vercel.app/course/${params.id}`)
             },
             {
                 path:'/category/:id',
                 element:<Category></Category>,
-                loader:({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader:({ params }) => fetch(`https://b610-lerning-platform-server-side-nine.vercel.app/category/${params.id}`)
             },
             {
                 path:'/course/:id',
                 element:<LeftSideNav></LeftSideNav>,
-                loader:({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader:({ params }) => fetch(`https://b610-lerning-platform-server-side-nine.vercel.app/course/${params.id}`)
             },
             {
                 path:'/purchase/:id',
                 element:<PurchaseCourse></PurchaseCourse>,
-                loader:({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader:({ params }) => fetch(`https://b610-lerning-platform-server-side-nine.vercel.app/course/${params.id}`)
             },
            
             {
