@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image'
-import { FaClock, FaEye, FaMoneyCheck, FaRegBookmark, FaShareAlt, FaStar, FaTeeth } from 'react-icons/fa';
+import { FaClock, FaMoneyCheck, FaStar, FaTeeth } from 'react-icons/fa';
 
 const RightSideNav = ({course}) => {
     // console.log(course);
