@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import './LiftSideNav.css';
 import Button from 'react-bootstrap/Button';
 
 const LeftSideNav = () => {
+    
 
      const [categories, setCategories] = useState([]);
 

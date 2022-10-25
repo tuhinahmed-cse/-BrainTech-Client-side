@@ -6,7 +6,10 @@ import FAQ from "../components/FAQ/FAQ";
 import Footer from "../components/Footer/Footer";
 import Home from "../components/Home/Home";
 import Main from "../layouts/Main";
+import Category from "../MainPages/Category/Category";
 import Course from "../MainPages/Course/Course";
+import CourseDetails from "../MainPages/CourseDetails/CourseDetails";
+import LeftSideNav from "../MainPages/LeftSideNav/LeftSideNav";
 
 export const router = createBrowserRouter([
     {
@@ -20,9 +23,25 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/course',
-                element:<Course></Course>
+                element:<Course></Course>,
+                loader:() => fetch('http://localhost:5000/courses/')
             },
-
+            {
+                path:'/course/:id',
+                element:<CourseDetails></CourseDetails>,
+                loader:({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+            },
+            {
+                path:'/category/:id',
+                element:<Category></Category>,
+                loader:({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+            },
+            {
+                path:'/course/:id',
+                element:<LeftSideNav></LeftSideNav>,
+                loader:({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+            },
+           
             {
                 path:'/contact',
                 element:<Contact></Contact>
