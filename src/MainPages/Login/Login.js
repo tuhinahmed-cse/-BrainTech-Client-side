@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
@@ -10,8 +10,9 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 
 const Login = () => {
-    const { providerLogin, signIn } = useContext(AuthContext);
+    const { providerLogin, signIn, gitProviderLogin } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     const [error, setError]= useState('');
     const navigate =useNavigate();
     const location = useLocation();
@@ -57,6 +58,20 @@ const handleGoogleSignIn =()=>{
 
 }
 
+const handleGithubSignIn =()=>{
+
+  gitProviderLogin(githubProvider)
+    .then(result => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, {replace:true});
+        toast.success('Login SucessFully! Thank You')
+
+    })
+    .catch(error => console.error(error))
+
+}
+
     
     return (
 <div style={{backgroundColor:'#EAFAF1'}}>
@@ -85,7 +100,7 @@ const handleGoogleSignIn =()=>{
       <br></br>
       <p style={{color:"goldenrod"}}> Don't Have an account ? <Link to='/register' style={{border:'2px solid skyblue', padding:'5px', textDecoration:"none", fontWeight:'500', color:'tomato'}}>Register</Link> </p> 
       <Button variant="outline-info" className='me-3' onClick={handleGoogleSignIn} ><FaGoogle></FaGoogle> Login With Google</Button>
-      <Button variant="outline-secondary"><FaGithub></FaGithub> Login With GitHub</Button>
+      <Button variant="outline-secondary" onClick={handleGithubSignIn}><FaGithub></FaGithub> Login With GitHub</Button>
 
       
     </Form>
