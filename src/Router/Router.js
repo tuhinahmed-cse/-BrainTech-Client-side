@@ -13,6 +13,7 @@ import LeftSideNav from "../MainPages/LeftSideNav/LeftSideNav";
 import Login from "../MainPages/Login/Login";
 import Register from "../MainPages/Login/Register";
 import PurchaseCourse from "../MainPages/PurchaseCourse/PurchaseCourse";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -46,7 +47,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/purchase/:id',
-                element:<PurchaseCourse></PurchaseCourse>,
+                element: <PrivateRoute><PurchaseCourse></PurchaseCourse></PrivateRoute>,
                 loader:({ params }) => fetch(`https://b610-lerning-platform-server-side-nine.vercel.app/course/${params.id}`)
             },
            
