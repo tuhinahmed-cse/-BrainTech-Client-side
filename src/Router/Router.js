@@ -10,6 +10,8 @@ import Category from "../MainPages/Category/Category";
 import Course from "../MainPages/Course/Course";
 import CourseDetails from "../MainPages/CourseDetails/CourseDetails";
 import LeftSideNav from "../MainPages/LeftSideNav/LeftSideNav";
+import Login from "../MainPages/Login/Login";
+import Register from "../MainPages/Login/Register";
 import PurchaseCourse from "../MainPages/PurchaseCourse/PurchaseCourse";
 
 export const router = createBrowserRouter([
@@ -64,6 +66,14 @@ export const router = createBrowserRouter([
             {
                 path:'/footer',
                 element:<Footer></Footer>
+            },
+            {
+                path:'/login',
+                element:<Login></Login>
+            },
+            {
+                path:'/register',
+                element:<Register></Register>
             },
         ]
     }
