@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
@@ -28,10 +29,12 @@ const Register = () => {
                 form.reset();
                 handleUpdateProfile(name, photoURL);
                 navigate('/');
+                toast.success('Registration Complete!! Welcome to our site ')
             })
             .catch(e => {
 
                 setError(e.message);
+                toast.error(e.message);
             });
 
     }

@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
@@ -30,10 +31,12 @@ const Login = () => {
             form.reset();
             setError('');
             navigate(from, {replace:true});
+            toast.success('Login SucessFully! Thank You')
         })
         .catch(error => {
           console.error(error);
           setError(error.message);
+          toast.error(error.message);
 
         })
     }
@@ -47,6 +50,7 @@ const handleGoogleSignIn =()=>{
         const user = result.user;
         console.log(user);
         navigate(from, {replace:true});
+        toast.success('Login SucessFully! Thank You')
 
     })
     .catch(error => console.error(error))
