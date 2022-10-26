@@ -4,7 +4,7 @@ An online base programing tutorial where you can learn different types of progra
 
 
 ## Live Link
-Hosted in Firebase -> [BrainTech]()
+Hosted in Firebase -> [BrainTech](https://learning-platform-client-aa99b.firebaseapp.com/)
 
 ## Features and Description of This Peoject
 
