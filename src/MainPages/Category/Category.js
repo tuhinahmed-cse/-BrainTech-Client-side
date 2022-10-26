@@ -1,21 +1,33 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image'
-import { FaCartPlus, FaClock, FaMoneyCheck, FaStar, FaTeeth } from 'react-icons/fa';
+import { FaCartPlus, FaClock, FaFilePdf, FaMoneyCheck, FaStar, FaTeeth } from 'react-icons/fa';
 import { Button, Col, Container, Row } from 'react-bootstrap';
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas"
 
 const Category = () => {
 
 
     const categories = useLoaderData();
     const { id, title, price, author, details, rating, image_url, lecture, hour } = categories;
+
+    const inputRef = useRef(null);
+  const printDocument = () => {
+    html2canvas(inputRef.current).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, "JPEG", 0, 0);
+      pdf.save("download.pdf");
+    });
+  };
     return (
         <Container>
             <Row>
-
+            <h5 style={{textAlign:'center', marginTop:'20px', color:'goldenrod' }}>  Details About Your Selected Course  <button onClick={printDocument} style={{color:'tomato', fontWeight:'600', border:'none'}}>Print</button> <FaFilePdf></FaFilePdf> </h5>
                 <Col lg='6'>
                     <LeftSideNav></LeftSideNav>
 
@@ -25,6 +37,7 @@ const Category = () => {
 
 
                         <div className='mt-5'>
+                        <div id="divToPrint" ref={inputRef}>
                             <Card className="mb-2">
                                 <Card.Header className='d-flex justify-content-between align-items-center'>
 
@@ -70,6 +83,7 @@ const Category = () => {
                                 </Card.Footer>
                                 <Button variant="outline-info"><Link to={`/purchase/${id}`} style={{textDecoration:'none'}}>Get premium access <FaCartPlus></FaCartPlus></Link></Button>
                             </Card>
+                        </div>
                         </div>
                     </div>
 
