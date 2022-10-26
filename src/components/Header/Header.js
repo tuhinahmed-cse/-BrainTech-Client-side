@@ -55,7 +55,7 @@ const Header = () => {
 
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">
+            <Nav.Link >
               <OverlayTrigger
                 placement="right"
                 delay={{ show: 250, hide: 400 }}
@@ -73,7 +73,7 @@ const Header = () => {
 
 
             </Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
+            <Nav.Link eventKey={2} >
             {
                                 user?.uid ?
                                     

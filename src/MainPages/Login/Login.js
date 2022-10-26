@@ -1,16 +1,40 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 
 const Login = () => {
-    const { providerLogin } = useContext(AuthContext);
+    const { providerLogin, signIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+    const [error, setError]= useState('');
+    const navigate =useNavigate();
+
+
+
+    const handleSubmit = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            setError('');
+            navigate('/');
+        })
+        .catch(error => {
+          console.error(error);
+          setError(error.message);
+
+        })
+    }
 
 
 
@@ -33,23 +57,30 @@ const handleGoogleSignIn =()=>{
         <Row>
             <h3 className='mb-5 mt-5' style={{color:'goldenrod', fontFamily:'fantasy'}}> WELCOME TO OUR BRAINTECH LOGIN PAGE</h3>
 
-        <Form>
+        <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3 w-50" controlId="formBasicEmail">
         <Form.Label style={{color:'#087661', fontSize:'20px',fontWeight:'600'}}>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Control type="email" name='email' placeholder="Enter email" required />
       </Form.Group>
 
       <Form.Group className="mb-3 w-50" controlId="formBasicPassword">
         <Form.Label style={{color:'#087661', fontSize:'20px',fontWeight:'600'}}>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control type="password" name='password' placeholder="Password" required />
       </Form.Group>
+    
       <Button variant="primary" type="submit" className='mb-3'>
         Login 
       </Button>
+      <Form.Text className="text-danger ms-4">
+          {error}
+        </Form.Text>
+      
       <br></br>
       <p style={{color:"goldenrod"}}> Don't Have an account ? <Link to='/register' style={{border:'2px solid skyblue', padding:'5px', textDecoration:"none", fontWeight:'500', color:'tomato'}}>Register</Link> </p> 
       <Button variant="outline-info" className='me-3' onClick={handleGoogleSignIn} ><FaGoogle></FaGoogle> Login With Google</Button>
       <Button variant="outline-secondary"><FaGithub></FaGithub> Login With GitHub</Button>
+
+      
     </Form>
 
 
