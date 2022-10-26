@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Container, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -21,7 +21,10 @@ const PurchaseCourse = () => {
                             <ListGroup.Item style={{ color:'#09997D ', fontWeight:'500'}}>Price: {price}$</ListGroup.Item>
                             <ListGroup.Item style={{ color:'#09997D ', fontWeight:'500'}}>Author: {author.name}</ListGroup.Item>
                         </ListGroup>
+                        <Button className='mt-2' variant="success">Conform</Button>
+                    
                     </Card>
+                
                 
             </Row>
 
